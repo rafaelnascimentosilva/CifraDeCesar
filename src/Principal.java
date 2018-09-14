@@ -5,53 +5,48 @@ public class Principal {
 
 	public static void main(String[] args) throws IOException {
 
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
-		String opcao;
-		String frase = null;
-		String fraseIni= null;
-		int chave;
+		Scanner sc = new Scanner(System.in);// reponsável pela entrada de dados do teclado
 
-		 Menu();
+		String opcao; // escolhe as opções do Menu
+
+		String frase = null; // frase a ser criptografada
+
+		String fraseIni = null; // guarda a frase inicial para compararmos no fim do programa
+
+		int chave; // chave de criptografia
+
+		Menu();
 
 		do {
-
-			opcao = sc.nextLine();
-
+			opcao = sc.nextLine(); // recebe a opção do teclado
 			switch (opcao) {
-
 			case "1":
+
 				System.out.print("\n");
-				System.out.println("Digite a palavra para Encriptar:");
-				System.out.print("Palavra: ");
-				frase = sc.nextLine();
-				fraseIni = frase;
-
+				System.out.println("Digite a palavra para Encriptar:");				
+				System.out.print("Palavra: ");				
+				frase = sc.nextLine(); // recebe a frase do teclado
+				fraseIni = frase; // guarda a frase
 				System.out.println("Digite a Chave:");
-				System.out.print("Chave: ");
-				chave = sc.nextInt();
-
-				System.out.println(Encripta(chave, frase));
-
+				System.out.print("Chave: ");				
+				chave = sc.nextInt();// recebe a chave do teclado
+				System.out.println("Frase Criptografada: " + Encripta(chave, frase)); // Método que mostra a frase criptografada
 				break;
 
 			case "2":
 				System.out.print("\n");
 				System.out.println("Digite a palavra para Decifrar:");
 				System.out.print("Palavra: ");
-				frase = sc.nextLine();
-
+				frase = sc.nextLine(); // recebe a frase do teclado
 				System.out.println("Digite a chave");
 				System.out.print("Chave-> ");
-				chave = sc.nextInt();
-				System.out.println(Decripta(chave, frase));
-				
+				chave = sc.nextInt();// recebe a chave do teclado
+				System.out.println("Frase Decriptografada: " + Decripta(chave, frase));
 				if (Decripta(chave, frase).equals(fraseIni)) {
 					System.out.println("PALAVRA DESCOBERTA");
-				}else {
+				} else {
 					System.out.println("PALAVRA errada");
 				}
-
 				break;
 
 			case "3":
@@ -63,12 +58,9 @@ public class Principal {
 				break;
 
 			default:
-			
 				break;
-
 			}
 		} while (opcao != "0");
-
 	}
 
 	public static void Menu() {
@@ -97,10 +89,8 @@ public class Principal {
 			while (letraCifradaASCII > 126)
 				letraCifradaASCII -= 94;
 
-			textoCrifrado.append((char) letraCifradaASCII);			
-		
+			textoCrifrado.append((char) letraCifradaASCII);
 		}
-
 		return textoCrifrado.toString();
 	}
 
@@ -118,11 +108,7 @@ public class Principal {
 				letraDecifrada += 94;
 
 			textoDeCifrado.append((char) letraDecifrada);
-					
-
 		}
-
 		return textoDeCifrado.toString();
 	}
-
 };
